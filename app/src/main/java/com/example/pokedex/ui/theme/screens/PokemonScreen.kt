@@ -2,13 +2,17 @@ package com.example.pokedex.ui.theme.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
@@ -64,54 +68,63 @@ fun PokemonScreen(){
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        PokemonCard(pokemon = pokemon) //Conectamos PokemonCard con la variable pokemonn del Screen
-        Spacer(modifier = Modifier.height(20.dp))
-
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize(),
+            contentPadding = PaddingValues(vertical = 8.dp),
+            verticalArrangement = Arrangement.spacedBy(15.dp)
         ) {
-            Button(
-                onClick = {
-                    if (indice == 0){
-                        indice = PokemonRepo.pokemones.lastIndex
-                    }else{
-                        indice--
-                    }
-                },
-                modifier = Modifier
-                    .width(150.dp)
-                    .padding(top = 75.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.Red,
-                    contentColor = Color.White
-                )
-            ) {
-                Text("Regresar")
-            }
-
-            Button(
-                onClick = {
-                    if (indice == PokemonRepo.pokemones.lastIndex){
-                        indice = 0
-                    }else{
-                        indice++
-                    }
-                },
-                modifier = Modifier
-                    .width(150.dp)
-                    .padding(top = 75.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.Red,
-                    contentColor = Color.White
-                )
-            ) {
-                Text("Siguiente")
+            items(PokemonRepo.pokemones){ pokemon ->
+                PokemonCard(pokemon = pokemon)
             }
         }
 
+
+//        Row(
+//            modifier = Modifier.fillMaxWidth(),
+//            horizontalArrangement = Arrangement.SpaceBetween
+//        ) {
+//            Button(
+//                onClick = {
+//                    if (indice == 0){
+//                        indice = PokemonRepo.pokemones.lastIndex
+//                    }else{
+//                        indice--
+//                    }
+//                },
+//                modifier = Modifier
+//                    .width(150.dp)
+//                    .padding(top = 75.dp),
+//                colors = ButtonDefaults.buttonColors(
+//                    containerColor = Color.Red,
+//                    contentColor = Color.White
+//                )
+//            ) {
+//                Text("Regresar")
+//            }
+
+//            Button(
+//                onClick = {
+//                    if (indice == PokemonRepo.pokemones.lastIndex){
+//                        indice = 0
+//                    }else{
+//                        indice++
+//                    }
+//                },
+//                modifier = Modifier
+//                    .width(150.dp)
+//                    .padding(top = 75.dp),
+//                colors = ButtonDefaults.buttonColors(
+//                    containerColor = Color.Red,
+//                    contentColor = Color.White
+//                )
+//            ) {
+//                Text("Siguiente")
+//            }
+        }
+
     }
-}
+//}
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable

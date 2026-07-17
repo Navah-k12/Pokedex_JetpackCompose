@@ -1,5 +1,6 @@
 package com.example.pokedex.ui.theme.components
 
+import androidx.compose.animation.core.animateValueAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -14,8 +15,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.pokedex.data.PokemonRepo
 import com.example.pokedex.model.Pokemon
 
 /**
@@ -55,41 +58,47 @@ fun PokemonCard(pokemon : Pokemon){
                     text = pokemon.nombre,
                     fontSize = 20.sp
                 )
-                Spacer(modifier = Modifier.height(12.dp)
-                )
-
-                Text(
-                    text = "Tipo ",
-                    fontWeight = FontWeight.Bold
-                )
-                Text(
-                    text = pokemon.tipo,
-                    fontSize = 20.sp
-                )
-                Spacer(modifier = Modifier.height(12.dp)
-                )
-
-                Text(
-                    text = "Altura",
-                    fontWeight = FontWeight.Bold
-                )
-                Text(
-                    text = pokemon.altura,
-                    fontSize = 20.sp
-                )
-                Spacer(modifier = Modifier.height(12.dp)
-                )
-
-                Text(
-                    text = "Peso",
-                    fontWeight = FontWeight.Bold
-                )
-                Text(
-                    text = pokemon.peso,
-                    fontSize = 20.sp
-                )
-
+                Spacer(modifier = Modifier.height(12.dp))
+//
+//                Text(
+//                    text = "Tipo ",
+//                    fontWeight = FontWeight.Bold
+//                )
+//                Text(
+//                    text = pokemon.tipo,
+//                    fontSize = 20.sp
+//                )
+//                Spacer(modifier = Modifier.height(12.dp)
+//                )
+//
+//                Text(
+//                    text = "Altura",
+//                    fontWeight = FontWeight.Bold
+//                )
+//                Text(
+//                    text = pokemon.altura,
+//                    fontSize = 20.sp
+//                )
+//                Spacer(modifier = Modifier.height(12.dp)
+//                )
+//
+//                Text(
+//                    text = "Peso",
+//                    fontWeight = FontWeight.Bold
+//                )
+//                Text(
+//                    text = pokemon.peso,
+//                    fontSize = 20.sp
+//                )
+//
             }
         }
     }
+}
+
+@Preview(showSystemUi = true)
+@Composable
+fun PokemonCardPreview(){
+    val CardPreview = PokemonRepo.pokemones[0]
+    PokemonCard(pokemon = CardPreview)
 }
