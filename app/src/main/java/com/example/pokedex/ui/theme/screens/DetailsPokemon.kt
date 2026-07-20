@@ -43,17 +43,19 @@ fun DetailsPokemon(pokemon: Pokemon,onBack: () -> Unit) {
             elevation = CardDefaults.cardElevation(defaultElevation = 20.dp),
             colors = CardDefaults.cardColors(Color.White),
 
+
             ) {
             Column(modifier = Modifier
                 .fillMaxWidth()
                 .padding(15.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Spacer(Modifier.padding(15.dp))}
+                Spacer(Modifier.padding(15.dp))
 
-            AsyncImage(model = pokemon.imagen,
-                contentDescription = pokemon.nombre,
-                modifier = Modifier.size(200.dp))
+                AsyncImage(model = pokemon.imagen,
+                    contentDescription = pokemon.nombre,
+                    modifier = Modifier.size(200.dp),
+                    alignment = Alignment.Center)
 
                 Spacer(modifier = Modifier.padding(15.dp))
 
@@ -85,7 +87,7 @@ fun DetailsPokemon(pokemon: Pokemon,onBack: () -> Unit) {
                     horizontalAlignment = Alignment.CenterHorizontally) {
                     Text(text = "Shymin", fontWeight = FontWeight.SemiBold,color =Color.Yellow)
 
-                    AsyncImage(model = pokemon.imagen,
+                    AsyncImage(model = pokemon.imagenShyni,
                         contentDescription = pokemon.nombre,
                         modifier = Modifier.size(150.dp))
                     Text(text = "Información", fontWeight = FontWeight.SemiBold)
@@ -93,13 +95,11 @@ fun DetailsPokemon(pokemon: Pokemon,onBack: () -> Unit) {
 
                 }
                 Spacer(Modifier.padding(10.dp))
-
-
             }
         }
 
     }
-
+}
 
 
 @Preview(showSystemUi = true)

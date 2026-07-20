@@ -35,6 +35,7 @@ object PokemonRepo {
                     "como mediador en conflictos entre otros Pokémon y absorbe energía solar " +
                     "a través del bulbo en su espalda para fortalecerse.",
             imagen = R.drawable.bulbasaur,
+            imagenShyni = R.drawable.bulbasaurshiny
         ),
 
         Pokemon(
@@ -42,8 +43,11 @@ object PokemonRepo {
             tipo = "Planta / Veneno",
             altura = "1.0 m",
             peso = "13.0 kg",
-            descripcion = "",
-            imagen = R.drawable.ivysaur
+            descripcion = "Cuando el bulbo en su espalda comienza a florecer, indica que su " +
+                    "evolución está cerca. Pasa gran parte del tiempo bajo la luz del sol, lo que " +
+                    "le otorga la energía necesaria para desarrollar su poderosa planta.",
+            imagen = R.drawable.ivysaur,
+            imagenShyni = R.drawable.ivysaurshiny
         ),
 
         Pokemon(
@@ -51,65 +55,90 @@ object PokemonRepo {
             tipo = "Planta/Veneno",
             altura = "2.0 m",
             peso = "100.0 kg",
-            descripcion = "",
-            imagen = R.drawable.venusaur
+            descripcion = "Posee una gran flor en su espalda que emite un aroma dulce capaz de " +
+                    "calmar a otros Pokémon. Es un Pokémon imponente y tranquilo que utiliza la" +
+                    " energía solar para ejecutar ataques devastadores.",
+            imagen = R.drawable.venusaur,
+            imagenShyni = R.drawable.venusaurshiny
         ),
 
         Pokemon(
             nombre = "Raycuaza",
-            tipo = "Legendario",
+            tipo = "Dragón/Volador",
             altura = "7.0 m",
             peso = "100 kg",
-            descripcion = "",
-            imagen = R.drawable.rayquaza
+            descripcion = "Posee una gran flor en su espalda que emite un aroma dulce capaz de " +
+                    "calmar a otros Pokémon. Es un Pokémon imponente y tranquilo que utiliza la " +
+                    "energía solar para ejecutar ataques devastadores.",
+            imagen = R.drawable.rayquaza,
+            imagenShyni = R.drawable.rayquazashiny
         ),
         Pokemon(
             nombre = "Lugia",
-            tipo = "Legendario",
+            tipo = "Psíquico/Volador",
             altura = "5.0 m",
             peso = "150 kg",
-            descripcion = "",
-            imagen = R.drawable.lugia
+            descripcion = "Conocido como el guardián de los mares, posee un poder tan inmenso que" +
+                    " debe vivir en las profundidades del océano para no causar tormentas " +
+                    "devastadoras con el simple aleteo de sus alas.",
+            imagen = R.drawable.lugia,
+            imagenShyni = R.drawable.lugiashiny
         ),
 
         Pokemon(
-            nombre = "Lugia",
-            tipo = "Legendario",
+            nombre = "Mewtwo",
+            tipo = "Psíquico",
             altura = "5.0 m",
             peso = "150 kg",
-            descripcion = "",
-            imagen = R.drawable.mewtwo
+            descripcion = "Creado artificialmente a partir del ADN del Pokémon singular Mew, " +
+                    "posee un poder psíquico abrumador y una inteligencia superior, lo que lo " +
+                    "convierte en uno de los Pokémon más poderosos que existen.",
+            imagen = R.drawable.mewtwo,
+            imagenShyni = R.drawable.mewtwoshiny
         ),
         Pokemon(
             nombre = "Gyarados",
-            tipo = "Legendario",
+            tipo = "Agua/Volador",
             altura = "5.0 m",
             peso = "150 kg",
-            descripcion = "",
-            imagen = R.drawable.gyarados
-        ),        Pokemon(
-            nombre = "Gyarados",
-            tipo = "Legendario",
-            altura = "5.0 m",
-            peso = "150 kg",
-            descripcion = "",
-            imagen = R.drawable.mimikyushyni
+            descripcion = "Feroz y destructivo por naturaleza, se dice que es capaz de arrasar " +
+                    "ciudades enteras cuando se enfurece. Aparece en medio de grandes tormentas" +
+                    " y es conocido por su temperamento explosivo.",
+            imagen = R.drawable.gyarados,
+            imagenShyni = R.drawable.gyaradosshiny
         ),
         Pokemon(
-            nombre = "Gyarados",
-            tipo = "Legendario",
+            nombre = "Mimikyu",
+            tipo = "Fantasma/Hada",
             altura = "5.0 m",
             peso = "150 kg",
-            descripcion = "",
-            imagen = R.drawable.eevee
+            descripcion = "Un Pokémon solitario que se cubre con un saco que imita a Pikachu para" +
+                    " intentar hacer amigos. Prefiere la oscuridad y se dice que su verdadera forma" +
+                    " es tan aterradora que no debe ser vista.",
+            imagen = R.drawable.mimikyu,
+            imagenShyni = R.drawable.mimikyushyni
         ),
         Pokemon(
-            nombre = "Lugia",
-            tipo = "Legendario",
+            nombre = "Eevee",
+            tipo = "Normal",
             altura = "5.0 m",
             peso = "150 kg",
-            descripcion = "",
-            imagen = R.drawable.umbreon
+            descripcion = "Posee una estructura genética inestable que le permite evolucionar en" +
+                    " diversas formas dependiendo34 del entorno o los estímulos que reciba, " +
+                    "adaptándose a múltiples situaciones.",
+            imagen = R.drawable.eevee,
+            imagenShyni = R.drawable.eeveeshyni
+        ),
+        Pokemon(
+            nombre = "Umbreom",
+            tipo = "Siniestro",
+            altura = "5.0 m",
+            peso = "150 kg",
+            descripcion = "Este Pokémon evoluciona al ser expuesto a la energía lunar. Sus anillos " +
+                    "brillan cuando se siente amenazado o bajo la luz de la luna, y es conocido por " +
+                    "su gran capacidad defensiva.",
+            imagen = R.drawable.umbreon,
+            imagenShyni = R.drawable.umbreonshiny
         )
     )
 

@@ -18,5 +18,6 @@ data class Pokemon(
     val altura : String,
     val peso : String,
     val descripcion : String,
-    val imagen : Int
+    val imagen : Int,
+    val imagenShyni : Int
 )

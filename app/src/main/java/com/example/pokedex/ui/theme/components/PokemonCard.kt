@@ -43,11 +43,12 @@ fun PokemonCard(pokemon : Pokemon, onClick: ()-> Unit){
                 .fillMaxWidth()
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
+
         ) {
             AsyncImage(model = pokemon.imagen,
                 contentDescription = pokemon.nombre,
-                modifier = Modifier.size(200.dp
-                ))
+                modifier = Modifier.size(150.dp)
+            )
 
             Spacer(modifier = Modifier.height(20.dp))
 
