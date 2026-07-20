@@ -38,6 +38,13 @@ android {
 }
 
 dependencies {
+    /// Gifs
+    implementation("io.coil-kt.coil3:coil-compose:3.5.0")
+    implementation("io.coil-kt.coil3:coil-gif:3.5.0")
+    /////////
+    implementation(libs.androidx.material3)
+    implementation(libs.androidx.navigation.compose)
+    val nav_version = "2.9.8"
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.material3)

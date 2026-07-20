@@ -17,5 +17,6 @@ data class Pokemon(
     val tipo : String,
     val altura : String,
     val peso : String,
+    val descripcion : String,
     val imagen : Int
 )

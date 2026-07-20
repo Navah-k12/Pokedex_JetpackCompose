@@ -2,6 +2,7 @@ package com.example.pokedex.ui.theme.components
 
 import androidx.compose.animation.core.animateValueAsState
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,6 +19,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil3.compose.AsyncImage
 import com.example.pokedex.data.PokemonRepo
 import com.example.pokedex.model.Pokemon
 
@@ -30,9 +32,11 @@ import com.example.pokedex.model.Pokemon
  */
 
 @Composable
-fun PokemonCard(pokemon : Pokemon){
+fun PokemonCard(pokemon : Pokemon, onClick: ()-> Unit){
     Card(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable{onClick()}
     ) {
         Column(
             modifier = Modifier
@@ -40,10 +44,10 @@ fun PokemonCard(pokemon : Pokemon){
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Image(painter = painterResource(pokemon.imagen),
+            AsyncImage(model = pokemon.imagen,
                 contentDescription = pokemon.nombre,
-                modifier = Modifier.size(200.dp)
-            )
+                modifier = Modifier.size(200.dp
+                ))
 
             Spacer(modifier = Modifier.height(20.dp))
 
@@ -96,9 +100,9 @@ fun PokemonCard(pokemon : Pokemon){
     }
 }
 
-@Preview(showSystemUi = true)
-@Composable
-fun PokemonCardPreview(){
-    val CardPreview = PokemonRepo.pokemones[0]
-    PokemonCard(pokemon = CardPreview)
-}
+//@Preview(showSystemUi = true)
+//@Composable
+//fun PokemonCardPreview(){
+//    val CardPreview = PokemonRepo.pokemones[0]
+//    PokemonCard(pokemon = CardPreview)
+//}
