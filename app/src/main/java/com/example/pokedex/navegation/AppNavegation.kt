@@ -31,18 +31,18 @@ fun AppNavegation(){
          composable( "ListaPokemones"){
              PokemonScreen(// Llamamos la funcion a la cual nos va a redirigir
                  onNavigate = { // Se crea un UNIt en la funcion a donde se navegara
-                     pokemonNombre ->
-                     navController.navigate("details/${pokemonNombre}")
+                     nombrePokemon ->
+                     navController.navigate("details/${nombrePokemon}")
                  }
              )
 
          }
 
-        composable("details/{pokemonNombre}"){ backStackEntry -> //
+        composable("details/{nombrePokemon}"){ backStackEntry -> //
             // Se extare el nombre del pokemon de la ruta
-            val pokemonNombre = backStackEntry.arguments?.getString("pokemonNombre")
+            val nombrePokemon = backStackEntry.arguments?.getString("nombrePokemon")
             // Buscamos el objeto pokemon en la base de datos con el nombre
-            val pokemon = PokemonRepo.pokemones.firstOrNull { it.nombre == pokemonNombre }
+            val pokemon = PokemonRepo.pokemones.firstOrNull { it.nombre == nombrePokemon }
 
             if(pokemon != null){
                 DetailsPokemon(
