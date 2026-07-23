@@ -101,7 +101,8 @@ fun PokemonScreen(onNavigate: (String) -> Unit) {
         Spacer(modifier = Modifier.height(10.dp))
 
         Text(
-            text = "Conoce la información de cada Pokémon que has capturado, como su naturaleza entre otras características destacadas.",
+            text = "Conoce la información de cada Pokémon que has capturado, como su naturaleza " +
+                    "entre otras características destacadas.",
             fontSize = 15.sp,
             color = Color(0xFF64748B),
             lineHeight = 22.sp

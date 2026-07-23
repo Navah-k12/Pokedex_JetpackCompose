@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.example.pokedex.data.PokemonRepo
 import com.example.pokedex.model.Pokemon
+import com.example.pokedex.model.BadgeType
 
 /**
  * Project: Pokédex
@@ -148,7 +149,12 @@ fun DetailsPokemon(pokemon: Pokemon, onBack: () -> Unit) {
                         ) {
                             Text(text = "Tipo", fontSize = 12.sp, color = Color(0xFF64748B))
                             Spacer(modifier = Modifier.height(4.dp))
-                            Text(text = pokemon.tipo, fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Color(0xFF800000))
+                            val tipos = pokemon.tipo.split("/")
+                            Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                                tipos.forEach { t ->
+                                    BadgeType(tipo = t)
+                                }
+                            }
                         }
                     }
                 }
@@ -201,6 +207,18 @@ fun DetailsPokemon(pokemon: Pokemon, onBack: () -> Unit) {
                         lineHeight = 20.sp,
                         textAlign = TextAlign.Start
                     )
+                    
+                    Spacer(Modifier.height(15.dp))
+
+                    Box(modifier = Modifier.fillMaxWidth(),
+                        contentAlignment = Alignment.Center){
+                        Button(onClick = onBack,
+                            colors = ButtonDefaults.buttonColors(containerColor = Color.Red)){
+                            Text(text = "Regresar",
+                            )
+                        }
+                    }
+
                 }
             }
         }

@@ -2,7 +2,9 @@ package com.example.pokedex.ui.theme.components
 
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -20,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.example.pokedex.model.Pokemon
+import com.example.pokedex.model.BadgeType
 
 /**
  * Project: Pokédex
@@ -36,7 +39,7 @@ fun PokemonCard(pokemon : Pokemon, onClick: ()-> Unit){
             .fillMaxWidth()
             .clickable{onClick()},
         colors = CardDefaults.cardColors(Color.White),
-        elevation = CardDefaults.cardElevation(defaultElevation = 20.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
     ) {
         Column(
             modifier = Modifier
@@ -63,7 +66,16 @@ fun PokemonCard(pokemon : Pokemon, onClick: ()-> Unit){
                     text = pokemon.nombre,
                     fontSize = 20.sp
                 )
+
+                val tipo = pokemon.tipo.split("/")
                 Spacer(modifier = Modifier.height(12.dp))
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    tipo.forEach { tipoTexto ->
+                        BadgeType(tipo = tipoTexto)
+                    }
+                }
 //
 //                Text(
 //                    text = "Tipo ",
