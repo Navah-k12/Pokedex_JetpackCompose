@@ -21,3 +21,4 @@ data class Pokemon(
     val imagen : Int,
     val imagenShyni : Int
 )
+

@@ -22,6 +22,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -48,7 +49,7 @@ import com.example.pokedex.R
 // Screen Maneja toda la logica de programación
 
 @Composable
-fun PokemonScreen(onNavigate: (String) -> Unit) {
+fun PokemonScreen(onNavigate: (String) -> Unit, onBack: () -> Unit) {
     var indice by remember {
         mutableStateOf( 0)
     }
@@ -86,6 +87,17 @@ fun PokemonScreen(onNavigate: (String) -> Unit) {
                 fontWeight = FontWeight.Bold,
                 color = Color(0xFF800000)
             )
+
+            Column(horizontalAlignment = Alignment.End) {
+                Button(onClick = onBack) {
+                    Text(
+                        text = "Regresar"
+                    )
+                }
+            }
+
+
+
         }
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -115,7 +127,7 @@ fun PokemonScreen(onNavigate: (String) -> Unit) {
             modifier = Modifier
                 .fillMaxSize(),
             contentPadding = PaddingValues(vertical = 8.dp),// Separación vertical
-            verticalArrangement = Arrangement.spacedBy(15.dp) // Separación de espacios de los cards
+            verticalArrangement = Arrangement.spacedBy(25.dp) // Separación de espacios de el card
         ) {
             items(PokemonRepo.pokemones){ pokemon ->
                 PokemonCard(pokemon = pokemon,
@@ -173,7 +185,9 @@ fun PokemonScreen(onNavigate: (String) -> Unit) {
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun PokemoScreenPreview(){
-    PokemonScreen(){
+    PokemonScreen(
+        onNavigate = {},
+        onBack = {}
+    )
 
-    }
 }

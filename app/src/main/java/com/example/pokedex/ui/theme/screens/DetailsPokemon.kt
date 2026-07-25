@@ -11,9 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -49,10 +47,9 @@ fun DetailsPokemon(pokemon: Pokemon, onBack: () -> Unit) {
             .fillMaxSize()
             .background(Color(0xFFF8FAFC))
             .padding(16.dp)
-            .verticalScroll(rememberScrollState())
     ) {
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(20.dp))
 
         // Tarjeta principal con sombras suaves y esquinas redondeadas
         Card(
@@ -117,7 +114,10 @@ fun DetailsPokemon(pokemon: Pokemon, onBack: () -> Unit) {
                         ) {
                             Text(text = "Altura", fontSize = 12.sp, color = Color(0xFF64748B))
                             Spacer(modifier = Modifier.height(4.dp))
-                            Text(text = pokemon.altura, fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Color(0xFF0F172A))
+                            Text(text = pokemon.altura,
+                                fontSize = 15.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = Color(0xFF0F172A))
                         }
                     }
 
@@ -151,8 +151,8 @@ fun DetailsPokemon(pokemon: Pokemon, onBack: () -> Unit) {
                             Spacer(modifier = Modifier.height(4.dp))
                             val tipos = pokemon.tipo.split("/")
                             Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                                tipos.forEach { t ->
-                                    BadgeType(tipo = t)
+                                tipos.forEach {
+                                    BadgeType(tipo = it)
                                 }
                             }
                         }
@@ -180,7 +180,7 @@ fun DetailsPokemon(pokemon: Pokemon, onBack: () -> Unit) {
                         Spacer(modifier = Modifier.height(8.dp))
                         AsyncImage(
                             model = pokemon.imagenShyni,
-                            contentDescription = "${pokemon.nombre} Shiny",
+                            contentDescription = pokemon.nombre,
                             modifier = Modifier.size(130.dp)
                         )
                     }

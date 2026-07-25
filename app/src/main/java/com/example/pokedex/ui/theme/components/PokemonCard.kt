@@ -18,9 +18,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
+import com.example.pokedex.data.PokemonRepo
 import com.example.pokedex.model.Pokemon
 import com.example.pokedex.model.BadgeType
 
@@ -41,6 +43,7 @@ fun PokemonCard(pokemon : Pokemon, onClick: ()-> Unit){
         colors = CardDefaults.cardColors(Color.White),
         elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
     ) {
+        Spacer(Modifier.height(40.dp))
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -113,9 +116,11 @@ fun PokemonCard(pokemon : Pokemon, onClick: ()-> Unit){
     }
 }
 
-//@Preview(showSystemUi = true)
-//@Composable
-//fun PokemonCardPreview(){
-//    val CardPreview = PokemonRepo.pokemones[0]
-//    PokemonCard(pokemon = CardPreview)
-//}
+@Preview(showSystemUi = true)
+@Composable
+fun PokemonCardPreview(){
+    val CardPreview = PokemonRepo.pokemones[0]
+    PokemonCard(
+        pokemon = CardPreview,
+        onClick = {})
+}
