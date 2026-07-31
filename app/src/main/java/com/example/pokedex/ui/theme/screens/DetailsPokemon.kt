@@ -21,6 +21,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -45,7 +46,12 @@ fun DetailsPokemon(pokemon: Pokemon, onBack: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFF8FAFC))
+            .background(Brush.verticalGradient(
+                colors = listOf(
+                    Color(0xFFF8FBFF),
+                    Color(0xFF2A4C84)
+                )
+            ))
             .padding(16.dp)
     ) {
 

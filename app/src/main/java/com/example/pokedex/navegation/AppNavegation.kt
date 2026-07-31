@@ -1,6 +1,5 @@
 package com.example.pokedex.navegation
 
-import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
@@ -27,13 +26,6 @@ fun AppNavegation(){
 
     val navController = rememberNavController()
 
-
-    BackHandler(enabled = true) {
-        if (!navController.popBackStack()) {
-            (navController.context as? android.app.Activity)?.finish()
-        }
-    }
-
     // NavHost Construye el gráfico de navegación
     NavHost(
         navController = navController,
@@ -50,10 +42,7 @@ fun AppNavegation(){
         composable("Character"){
             CharaterScreen(
                 onNavigate = {
-                    navController.navigate("listaPokemones"){
-                        launchSingleTop = true
-                    }
-
+                    navController.navigate("listaPokemones")
                 },
                 onBack = { navController.popBackStack() }
             )
@@ -61,9 +50,7 @@ fun AppNavegation(){
          composable("listaPokemones"){
              PokemonScreen(
                  onNavigate = { nombrePokemon ->
-                     navController.navigate("details/${nombrePokemon}") {
-                         launchSingleTop = true
-                     }
+                     navController.navigate("details/${nombrePokemon}")
                  },
                  onBack = { navController.popBackStack() }
              )
@@ -75,18 +62,17 @@ fun AppNavegation(){
             // Buscamos el objeto pokemon en la base de datos con el nombre
             val pokemon = PokemonRepo.pokemones.firstOrNull { it.nombre == nombrePokemon }
 
-            if(pokemon != null){
+            if(pokemon != null) {
                 DetailsPokemon(
                     pokemon = pokemon,
                     onBack = {
-                        if (navController.previousBackStackEntry != null){
+                        if (navController.previousBackStackEntry != null) {
                             navController.popBackStack()
                         }
 
                     }
                 )
             }
-
         }
 
     }
@@ -99,3 +85,4 @@ fun AppNavegation(){
 fun AppNavegationPreview(){
     AppNavegation()
 }
+

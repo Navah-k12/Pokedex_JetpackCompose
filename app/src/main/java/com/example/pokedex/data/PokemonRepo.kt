@@ -139,7 +139,69 @@ object PokemonRepo {
                     "su gran capacidad defensiva.",
             imagen = R.drawable.umbreon,
             imagenShyni = R.drawable.umbreonshiny
+        ),
+        Pokemon(
+            nombre = "Excadrill",
+            tipo = "Tierra/Acero",
+            altura = "0.7 m",
+            peso = "40.4 kg",
+            descripcion = "Excava túneles a gran velocidad girando su cuerpo como un taladro. " +
+                    "Es capaz de perforar incluso planchas de hierro.",
+            imagen = R.drawable.excadrill,
+            imagenShyni = R.drawable.excadrillshiny
+        ),
+        Pokemon(
+            nombre = "Garchomp",
+            tipo = "Dragón / Tierra",
+            altura = "1.9 m",
+            peso = "95.0 kg",
+            descripcion = "Vuela a una velocidad increíble para atrapar a sus presas. " +
+                    "Sus alas son finas y afiladas, capaces de cortar árboles.",
+            imagen = R.drawable.garchomp,
+            imagenShyni = R.drawable.garchompshiny
+
+        ),
+        Pokemon(
+            nombre = "Hawlucha",
+            tipo = "Lucha / Volador",
+            altura = "0.8 m",
+            peso = "21.5 kg",
+            descripcion = "Lucha con acrobacias aéreas y ataques vistosos. Le gusta el " +
+                    "espectáculo y tiende a posar antes de dar el golpe final.",
+            imagen = R.drawable.hawlucha,
+            imagenShyni = R.drawable.hawluchashiny
+        ),
+        Pokemon(
+            nombre = "Mew",
+            tipo = "Psíquico",
+            altura = "0.4 m",
+            peso = "4.0 kg",
+            descripcion = "Se dice que posee el ADN de todos los Pokémon existentes. " +
+                    "Puede hacerse invisible a voluntad y aprender cualquier movimiento.",
+            imagen = R.drawable.mew,
+            imagenShyni = R.drawable.mewtwoshiny
+        ),
+        Pokemon(
+            nombre = "Tyrantrum",
+            tipo = "Roca / Dragón",
+            altura = "2.5 m",
+            peso = "270.0 kg",
+            descripcion = "Dominaba el mundo hace 100 millones de años." +
+                    " Sus mandíbulas son tan potentes que pueden triturar coches.",
+            imagen = R.drawable.tyrantrum,
+            imagenShyni = R.drawable.tyrantrumshiny
+        ),
+        Pokemon(
+            nombre = "Tyranitar",
+            tipo = "Roca / Siniestro",
+            altura = "2.0 m",
+            peso = "202.0 kg",
+            descripcion = "Es tan fuerte que puede cambiar el paisaje con sus movimientos. " +
+                    "Posee una piel extremadamente dura y resistente.",
+            imagen = R.drawable.tyranitar,
+            imagenShyni = R.drawable.tyranitarshiny
         )
+
     )
 
 }

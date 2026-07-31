@@ -1,19 +1,18 @@
 package com.example.pokedex.ui.theme.screens
 
 import androidx.compose.foundation.Image
-import androidx.compose.material3.Button
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -27,42 +26,94 @@ import com.example.pokedex.R
  * All rights reserved: 2026
  */
 
+
+
+
+
 @Composable
 fun HomeScreen(onNavigate: () -> Unit) {
+    Box(
+        modifier = Modifier.fillMaxSize()
+    ) {
 
-    Column(modifier = Modifier
-        .fillMaxWidth()
-        .padding(50.dp),
-        horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(
-            text = "Bienvendio",
-            fontSize = 50.sp
-
+        // Imagen de fondo
+        Image(
+            painter = painterResource(R.drawable.homescreen),
+            contentDescription = null,
+            modifier = Modifier.fillMaxSize(),
+            contentScale = ContentScale.Crop
         )
 
-        Spacer(Modifier.height(50.dp))
+         //Degradado para oscurecer la parte inferior
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .drawWithContent {
+                    drawContent()
 
-        Image(painter = painterResource(R.drawable.pokebola3),
-            contentDescription = "Home")
-        Spacer(Modifier.height(30.dp))
+                    drawRect(
+                        brush = Brush.verticalGradient(
+                            colors = listOf(
+                                Color.Transparent,
+                                Color.Transparent,
+                                Color(0x88000000),
+                                Color.Black
+                            )
+                        )
+                    )
+                }
+        )
 
-        Button(onClick = onNavigate,
-            colors = ButtonDefaults.buttonColors(Color.Red)) {
-            Text("Iniciar")
+        // Contenido
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(bottom = 70.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Bottom
+        ) {
+
+            Text(
+                text = "POKÉDEX",
+                color = Color.White,
+                fontSize = 42.sp,
+                fontWeight = FontWeight.ExtraBold
+            )
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Text(
+                text = "Descubre todos los Pokémon",
+                color = Color.White.copy(alpha = .9f),
+                fontSize = 18.sp
+            )
+
+            Spacer(modifier = Modifier.height(35.dp))
+
+            Button(
+                onClick = onNavigate,
+                modifier = Modifier
+                    .width(120.dp)
+                    .height(58.dp),
+                shape = RoundedCornerShape(50),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFFE53935)
+                )
+            ) {
+
+                Text(
+                    text = "Iniciar",
+                    fontSize = 20.sp
+                )
+            }
         }
-
-
-
-
-
     }
-
 }
 
 @Preview(showSystemUi = true)
 @Composable
 fun HomeScreenPreview(){
-    HomeScreen(
-        onNavigate = {}
-    )
+    HomeScreen(){
+
+    }
 }

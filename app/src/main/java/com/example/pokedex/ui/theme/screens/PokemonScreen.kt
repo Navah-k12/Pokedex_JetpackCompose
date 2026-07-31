@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -23,8 +24,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -58,47 +61,47 @@ fun PokemonScreen(onNavigate: (String) -> Unit, onBack: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFF8FAFC))
+            .background(Brush.verticalGradient(
+                colors = listOf(
+                    Color(0xFFF8FBFF),
+                    Color(0xFF2A4C84)
+                )
+            ))
             .padding(24.dp),
-        horizontalAlignment = Alignment.Start
 
     ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Box(
-                modifier = Modifier
-                    .size(46.dp)
-                    .background(Color(0xFF2D2D2D), shape = RoundedCornerShape(10.dp)),
-                contentAlignment = Alignment.Center,
+        Spacer(Modifier.height(10.dp))
+        
+        Column(Modifier.fillMaxWidth()) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Image(
-                    painter = painterResource(R.drawable.pokebola3),
-                    contentDescription = "Pokébola",
-                    modifier = Modifier.size(28.dp)
-                )
-            }
-
-            Spacer(modifier = Modifier.width(12.dp))
-
-            Text(
-                text = "Pokédex",
-                fontSize = 26.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color(0xFF800000)
-            )
-
-            Column(horizontalAlignment = Alignment.End) {
-                Button(onClick = onBack) {
-                    Text(
-                        text = "Regresar"
+                Box(
+                    modifier = Modifier
+                        .size(46.dp)
+                        .background(Color(0xFF2D2D2D), shape = RoundedCornerShape(10.dp)),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Image(
+                        painter = painterResource(R.drawable.pokebola3),
+                        contentDescription = "Logo", modifier = Modifier.size(28.dp)
                     )
                 }
+
+                Spacer(modifier = Modifier.width(12.dp))
+
+                Text(
+                    text = "Pokédex",
+                    fontSize = 26.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color(0xFF800000)
+                )
+
+
             }
 
-
-
         }
+
 
         Spacer(modifier = Modifier.height(20.dp))
 
@@ -120,20 +123,28 @@ fun PokemonScreen(onNavigate: (String) -> Unit, onBack: () -> Unit) {
             lineHeight = 22.sp
         )
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(8.dp))
 
 
         LazyColumn(
             modifier = Modifier
-                .fillMaxSize(),
+                .weight(1f),
             contentPadding = PaddingValues(vertical = 8.dp),// Separación vertical
-            verticalArrangement = Arrangement.spacedBy(25.dp) // Separación de espacios de el card
+            verticalArrangement = Arrangement.spacedBy(10.dp) // Separación de espacios de el card
         ) {
             items(PokemonRepo.pokemones){ pokemon ->
                 PokemonCard(pokemon = pokemon,
                     onClick = {onNavigate(pokemon.nombre)}) //Colcamos onClick aqui tambien
             }
         }
+
+        Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+            Button(onClick = onBack, colors = ButtonDefaults.buttonColors(containerColor = Color.Red)){
+                Text("Regresar")
+
+            }
+        }
+
 
 
 //        Row(

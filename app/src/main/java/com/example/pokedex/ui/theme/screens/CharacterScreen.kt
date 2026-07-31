@@ -1,23 +1,35 @@
 package com.example.pokedex.ui.theme.screens
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.pokedex.R
 import com.example.pokedex.data.CharacterRepository
 import com.example.pokedex.ui.theme.components.CharacterCard
 
@@ -30,24 +42,45 @@ import com.example.pokedex.ui.theme.components.CharacterCard
  */
 
 @Composable
-fun CharaterScreen(onNavigate:() -> Unit,onBack:() -> Unit){
-    Column(modifier = Modifier.fillMaxWidth().padding(40.dp),
+fun CharaterScreen(onNavigate:() -> Unit,onBack:()-> Unit){
+    Column(modifier = Modifier.fillMaxWidth()
+        .background(Brush.verticalGradient(
+            colors = listOf(
+                Color(0xFFF8FBFF), //0xFFF8FBFF
+                Color(0xFF2A4C84) //0xFF183A72 //
+            )
+        )),
         horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(
-            text = "Escoge tu Personaje",
-            fontSize = 30.sp,
-            fontWeight = FontWeight.Bold
-        )
 
-        Spacer(Modifier.height(30.dp))
+        Spacer(Modifier.height(20.dp))
         Column(modifier = Modifier.fillMaxWidth().padding(5.dp),
-            horizontalAlignment = Alignment.CenterHorizontally) {
-            Button(onClick = {onBack()}
-            ) {
-                Text(
-                    text = "Regresar",
+            horizontalAlignment = Alignment.End) {
 
+            Spacer(Modifier.height(15.dp))
+
+            Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                Box(modifier = Modifier.size(50.dp)
+                    .background(Color(0xFF2D2D2D),shape = RoundedCornerShape(10.dp)),
+                    contentAlignment = Alignment.Center
                 )
+                {
+                    Image(painter = painterResource(R.drawable.pokebola3),
+                        contentDescription = "Logo", modifier = Modifier.size(28.dp))
+
+                }
+
+
+                Spacer(Modifier.width(10.dp))
+
+                Text(
+                    text = "Escoge tu Personajes",
+                    fontSize = 30.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color(0xFF800000)
+                )
+
+                Spacer(Modifier.width(60.dp))
+
             }
         }
 
@@ -58,17 +91,21 @@ fun CharaterScreen(onNavigate:() -> Unit,onBack:() -> Unit){
         )
 
 
-        LazyColumn(modifier = Modifier.fillMaxWidth(),
+        LazyColumn(modifier = Modifier.fillMaxWidth().weight(1f),
             contentPadding = PaddingValues(vertical = 15.dp),
-            verticalArrangement = Arrangement.spacedBy(20.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
 
             )
         {
             items(CharacterRepository.characters){ character ->
                 CharacterCard(character = character,
-                    onClick = onNavigate,
-                    onBack = {})
+                    onClick = onNavigate)
             }
+        }
+
+        Button(onClick = onBack, colors = ButtonDefaults.buttonColors(Color.Red),
+            modifier = Modifier.padding(18.dp)) {
+            Text(text = "Regresar")
         }
 
 
@@ -84,6 +121,6 @@ fun CharaterScreen(onNavigate:() -> Unit,onBack:() -> Unit){
 fun CharacterScreenPreview(){
     CharaterScreen(
         onNavigate = {},
-        onBack = {}
+        {}
     )
 }

@@ -7,8 +7,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -31,26 +33,44 @@ import com.example.pokedex.model.Character
  */
 
 @Composable
-fun CharacterCard(character: Character, onClick:() -> Unit){
-    Card(modifier = Modifier.fillMaxWidth()
-        .clickable{onClick()},
-        elevation = CardDefaults.cardElevation(15.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White)
-    ) {
-        Column(modifier = Modifier.fillMaxWidth().padding(40.dp),
-            horizontalAlignment = Alignment.CenterHorizontally)
-        {
-            AsyncImage(model = character.imagen,
-                contentDescription = character.nombre,
-                modifier = Modifier.size(150.dp)
+fun CharacterCard(character: Character, onClick: () -> Unit){
 
-                )
-            Spacer(Modifier.height(20.dp))
+    Column(Modifier.fillMaxWidth().padding(15.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+        Card(modifier = Modifier.fillMaxWidth()
+            .clickable{onClick()},
+            elevation = CardDefaults.cardElevation(6.dp),
+            colors = CardDefaults.cardColors(containerColor = Color.White)
+        ) {
+            Column(modifier = Modifier.fillMaxWidth().padding(40.dp),
+                horizontalAlignment = Alignment.CenterHorizontally)
+            {
+                Surface(
+                    modifier = Modifier.fillMaxWidth(),
+                    color = Color(0xFFEFF6FF),
+                    shape = RoundedCornerShape(18.dp),
 
-            Text(text = character.nombre,fontSize = 20.sp,
-                fontWeight = FontWeight.Bold)
-            Text(text = character.descripcion)
+                ) {
 
+                    AsyncImage(model = character.imagen,
+                        contentDescription = character.nombre,
+                        modifier = Modifier.size(150.dp).padding(10.dp)
+
+                    )
+                }
+
+                Spacer(Modifier.height(20.dp))
+
+                Text(text = character.nombre,fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold)
+                Surface(
+                    color = Color(0xFFFCFDFF),
+                    shape = RoundedCornerShape(12.dp),
+                    modifier = Modifier.padding(4.dp).fillMaxWidth()
+                ) {
+                    Text(text = character.descripcion, Modifier.padding(8.dp))
+                }
+
+            }
         }
     }
 
@@ -62,8 +82,6 @@ fun CharacterCard(character: Character, onClick:() -> Unit){
 @Composable
 fun CharacterCardPreview(){
     CharacterCard(
-    character = CharacterRepository.characters[0],
-        onClick = {},
-
-    )
+        character = CharacterRepository.characters[0],
+    ) {}
 }

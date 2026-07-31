@@ -56,7 +56,7 @@ fun PokemonCard(pokemon : Pokemon, onClick: ()-> Unit){
                 modifier = Modifier.size(150.dp)
             )
 
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(15.dp))
 
             Column(
                 modifier = Modifier.fillMaxWidth(),
